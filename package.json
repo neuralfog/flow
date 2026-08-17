@@ -1,7 +1,6 @@
 {
     "name": "flow-monorepo",
     "version": "0.1.0",
-    "private": true,
     "license": "MIT",
     "author": "brownhounds",
     "type": "module",

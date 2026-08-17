@@ -1,17 +1,36 @@
 {
     "name": "@neuralfog/flow-dashboard",
     "version": "0.1.0",
-    "private": true,
     "license": "MIT",
     "author": "brownhounds",
     "type": "module",
+    "imports": {
+        "#src/*": "./src/*"
+    },
     "scripts": {
-        "lint": "tsc --noEmit && biome format && biome lint --error-on-warnings",
-        "lint:fix": "biome format --write . && biome lint --write . --error-on-warnings && tsc --noEmit"
+        "dev": "elemix-ssr dev",
+        "start": "bun run src/index.ts",
+        "build": "elemix-ssr build",
+        "preview": "NODE_ENV=production bun run ./dist/index.js",
+        "typecheck": "tsc --noEmit",
+        "lint": "biome check . && pnpm lint:tpl && pnpm typecheck && pnpm lint:analyze",
+        "lint:analyze": "ea --dirs src --root .",
+        "lint:tpl": "etf --dirs src",
+        "lint:fix": "biome check --write . && etf --dirs src --write"
     },
     "devDependencies": {
+        "@neuralfog/elemix-analyzer": "0.9.4",
+        "@neuralfog/elemix-template-formatter": "0.9.4",
         "@biomejs/biome": "2.5.5",
         "@types/bun": "1.3.14",
+        "@types/pg": "8.23.1",
         "typescript": "7.0.2"
+    },
+    "dependencies": {
+        "@neuralfog/elemix": "0.9.4",
+        "@neuralfog/elemix-ssr-plugin": "0.9.4",
+        "@neuralfog/hydris": "0.9.4",
+        "@neuralfog/flow": "workspace:*",
+        "pg": "8.23.0"
     }
 }
