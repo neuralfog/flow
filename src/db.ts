@@ -1,4 +1,4 @@
-import type { Sql } from './types';
+import { Pool } from 'pg';
 
 export type DbConfig = {
     host: string;
@@ -9,14 +9,14 @@ export type DbConfig = {
     ssl?: boolean;
 };
 
-export type Client = Sql & { end(): Promise<void> };
+export type Db = Pool;
 
-export const connectionUrl = (config: DbConfig): string => {
-    const user = encodeURIComponent(config.user);
-    const password = encodeURIComponent(config.password);
-    const query = config.ssl ? '?sslmode=require' : '';
-    return `postgres://${user}:${password}@${config.host}:${config.port}/${config.database}${query}`;
-};
-
-export const connect = (config: DbConfig): Client =>
-    new Bun.SQL(connectionUrl(config)) as unknown as Client;
+export const connect = (config: DbConfig): Db =>
+    new Pool({
+        host: config.host,
+        port: config.port,
+        user: config.user,
+        password: config.password,
+        database: config.database,
+        ssl: config.ssl ? { rejectUnauthorized: false } : undefined,
+    });

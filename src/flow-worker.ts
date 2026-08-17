@@ -1,6 +1,6 @@
 import { Client as PgClient } from 'pg';
 import type { DiContainer } from './container';
-import { type Client, connect, type DbConfig } from './db';
+import { connect, type Db, type DbConfig } from './db';
 import type { HandlerClass, JobHandler } from './job';
 import { type Registry, register } from './registry';
 import type { JobRow, WorkerState } from './types';
@@ -15,7 +15,7 @@ class TimeoutError extends Error {}
 export class FlowWorker {
     private running = false;
     private current: Promise<boolean> | null = null;
-    private sql: Client | null = null;
+    private sql: Db | null = null;
     private notifier: PgClient | null = null;
     private waiter: Waiter | null = null;
     private pending = false;
@@ -50,7 +50,7 @@ export class FlowWorker {
         this.sql = null;
     }
 
-    private get db(): Client {
+    private get db(): Db {
         if (this.sql === null) throw new Error('flow: worker is not running');
         return this.sql;
     }
@@ -71,7 +71,7 @@ export class FlowWorker {
             user: c.user,
             password: c.password,
             database: c.database,
-            ssl: c.ssl,
+            ssl: c.ssl ? { rejectUnauthorized: false } : undefined,
             application_name: `flow:worker:${this.options.id}:${this.bootId}`,
             keepAlive: true,
         });
@@ -180,8 +180,9 @@ export class FlowWorker {
     }
 
     private async nextWait(): Promise<number | null> {
-        const rows = await this.db<{ next: Date | null }[]>`
-            select flow.next_run() as next`;
+        const { rows } = await this.db.query<{ next: Date | null }>(
+            'select flow.next_run() as next',
+        );
         const next = rows[0]?.next;
         if (!next) return null;
         return Math.max(0, new Date(next).getTime() - Date.now());
@@ -189,20 +190,26 @@ export class FlowWorker {
 
     private async loop(): Promise<void> {
         while (this.running) {
-            const state = await this.desiredState();
-            if (state === 'draining') {
-                await this.stop();
-                return;
-            }
-            if (state === 'paused') {
-                await this.waitForWork(null);
-                continue;
-            }
-            this.current = this.tick();
-            const claimed = await this.current;
-            this.current = null;
-            if (!claimed && this.running) {
-                await this.waitForWork(await this.nextWait());
+            try {
+                const state = await this.desiredState();
+                if (state === 'draining') {
+                    await this.stop();
+                    return;
+                }
+                if (state === 'paused') {
+                    await this.waitForWork(null);
+                    continue;
+                }
+                this.current = this.tick();
+                const claimed = await this.current;
+                this.current = null;
+                if (!claimed && this.running) {
+                    await this.waitForWork(await this.nextWait());
+                }
+            } catch (error) {
+                this.current = null;
+                if (!this.running) return;
+                throw error;
             }
         }
     }
@@ -268,14 +275,18 @@ export class FlowWorker {
     }
 
     private async claim(): Promise<JobRow | null> {
-        const rows = await this.db<
-            JobRow[]
-        >`select * from flow.claim(${this.uuid}, ${this.bootId})`;
+        const { rows } = await this.db.query<JobRow>(
+            'select * from flow.claim($1, $2)',
+            [this.uuid, this.bootId],
+        );
         return rows[0] ?? null;
     }
 
     private async complete(row: JobRow): Promise<void> {
-        await this.db`select flow.complete(${row.id}, ${this.options.id})`;
+        await this.db.query('select flow.complete($1, $2)', [
+            row.id,
+            this.options.id,
+        ]);
     }
 
     private async fail(row: JobRow, error: unknown): Promise<void> {
@@ -284,26 +295,34 @@ export class FlowWorker {
                 ? (error.stack ?? error.message)
                 : String(error);
         const terminal = error instanceof TimeoutError ? 'timed_out' : 'failed';
-        await this.db`select flow.fail(${row.id}, ${message}, ${terminal})`;
+        await this.db.query('select flow.fail($1, $2, $3)', [
+            row.id,
+            message,
+            terminal,
+        ]);
     }
 
     private async register(): Promise<void> {
-        const rows = await this.db<{ id: string }[]>`
-            select flow.register(${this.options.id}, ${this.bootId}) as id`;
+        const { rows } = await this.db.query<{ id: string }>(
+            'select flow.register($1, $2) as id',
+            [this.options.id, this.bootId],
+        );
         this.uuid = rows[0].id;
     }
 
     private async busy(job: string): Promise<void> {
-        await this.db`select flow.busy(${this.options.id}, ${job})`;
+        await this.db.query('select flow.busy($1, $2)', [this.options.id, job]);
     }
 
     private async idle(): Promise<void> {
-        await this.db`select flow.idle(${this.options.id})`;
+        await this.db.query('select flow.idle($1)', [this.options.id]);
     }
 
     private async desiredState(): Promise<WorkerState> {
-        const rows = await this.db<{ desired_state: WorkerState }[]>`
-            select flow.desired_state(${this.options.id}) as desired_state`;
+        const { rows } = await this.db.query<{ desired_state: WorkerState }>(
+            'select flow.desired_state($1) as desired_state',
+            [this.options.id],
+        );
         return rows[0]?.desired_state ?? 'running';
     }
 }

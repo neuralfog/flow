@@ -1,12 +1,12 @@
-import { type Client, connect, type DbConfig } from './db';
+import { connect, type Db, type DbConfig } from './db';
 import type { JobContract } from './job';
 import type { EnqueueOptions } from './types';
 
 export class Queue {
-    private readonly sql: Client;
+    private readonly db: Db;
 
     constructor(config: DbConfig) {
-        this.sql = connect(config);
+        this.db = connect(config);
     }
 
     async enqueue<A>(
@@ -17,16 +17,18 @@ export class Queue {
         const at = options.at ?? new Date();
         const r = contract.retry;
         const timeout = contract.timeout > 0 ? contract.timeout : null;
-        const rows = await this.sql<{ id: string }[]>`
-            select flow.enqueue(
-                ${contract.name},
-                ${JSON.stringify(args)},
-                ${at},
-                ${r.retryable},
-                ${r.attempts},
-                ${r.backoff},
-                ${timeout}
-            ) as id`;
+        const { rows } = await this.db.query<{ id: string }>(
+            'select flow.enqueue($1, $2, $3, $4, $5, $6, $7) as id',
+            [
+                contract.name,
+                JSON.stringify(args),
+                at,
+                r.retryable,
+                r.attempts,
+                r.backoff,
+                timeout,
+            ],
+        );
         return rows[0].id;
     }
 
@@ -38,26 +40,29 @@ export class Queue {
     ): Promise<void> {
         const r = contract.retry;
         const timeout = contract.timeout > 0 ? contract.timeout : null;
-        await this.sql`
-            select flow.schedule(
-                ${contract.name},
-                ${JSON.stringify(args)},
-                ${at},
-                ${seconds}::int,
-                ${r.retryable},
-                ${r.attempts},
-                ${r.backoff},
-                ${timeout}
-            )`;
+        await this.db.query(
+            'select flow.schedule($1, $2, $3, $4::int, $5, $6, $7, $8)',
+            [
+                contract.name,
+                JSON.stringify(args),
+                at,
+                seconds,
+                r.retryable,
+                r.attempts,
+                r.backoff,
+                timeout,
+            ],
+        );
     }
 
     async reconcile(): Promise<number> {
-        const rows = await this.sql<{ count: string }[]>`
-            select flow.reconcile() as count`;
+        const { rows } = await this.db.query<{ count: string }>(
+            'select flow.reconcile() as count',
+        );
         return Number(rows[0].count);
     }
 
     close(): Promise<void> {
-        return this.sql.end();
+        return this.db.end();
     }
 }

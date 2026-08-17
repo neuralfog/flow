@@ -1,26 +1,31 @@
-import { type Client, connect, type DbConfig } from './db';
+import { connect, type Db, type DbConfig } from './db';
 import type { Row } from './types';
 
 export class Inspector {
-    private readonly sql: Client;
+    private readonly db: Db;
 
     constructor(config: DbConfig) {
-        this.sql = connect(config);
+        this.db = connect(config);
     }
 
-    workers(): Promise<Row[]> {
-        return this.sql<Row[]>`select * from flow.list_workers()`;
+    async workers(): Promise<Row[]> {
+        const { rows } = await this.db.query(
+            'select * from flow.list_workers()',
+        );
+        return rows;
     }
 
-    pending(): Promise<Row[]> {
-        return this.sql<Row[]>`select * from flow.pending()`;
+    async pending(): Promise<Row[]> {
+        const { rows } = await this.db.query('select * from flow.pending()');
+        return rows;
     }
 
-    failed(): Promise<Row[]> {
-        return this.sql<Row[]>`select * from flow.failed()`;
+    async failed(): Promise<Row[]> {
+        const { rows } = await this.db.query('select * from flow.failed()');
+        return rows;
     }
 
     close(): Promise<void> {
-        return this.sql.end();
+        return this.db.end();
     }
 }

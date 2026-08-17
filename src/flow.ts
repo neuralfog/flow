@@ -1,5 +1,6 @@
 import type { DbConfig } from './db';
 import { type Duration, ms } from './duration';
+import { FlowWorker, type FlowWorkerOptions } from './flow-worker';
 import { Inspector } from './inspector';
 import type { JobContract } from './job';
 import { migrate } from './migrate';
@@ -37,6 +38,12 @@ class FlowRuntime {
 
     config(config: DbConfig): void {
         this.dbConfig = config;
+    }
+
+    startWorker(options: FlowWorkerOptions): FlowWorker {
+        const worker = new FlowWorker(options);
+        void worker.start();
+        return worker;
     }
 
     add<A>(

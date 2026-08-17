@@ -9,18 +9,18 @@ export const migrate = async (
     config: DbConfig,
     from: string = own,
 ): Promise<string[]> => {
-    const sql = connect(config);
+    const db = connect(config);
     try {
-        await sql`create schema if not exists flow`;
-        await sql`
+        await db.query('create schema if not exists flow');
+        await db.query(`
             create table if not exists flow.migrations (
                 id         text primary key,
                 applied_at timestamptz not null default now()
-            )`;
+            )`);
 
-        const rows = await sql<
-            { id: string }[]
-        >`select id from flow.migrations`;
+        const { rows } = await db.query<{ id: string }>(
+            'select id from flow.migrations',
+        );
         const applied = new Set(rows.map((row) => row.id));
 
         const files = readdirSync(from)
@@ -30,14 +30,15 @@ export const migrate = async (
         const ran: string[] = [];
         for (const file of files) {
             if (applied.has(file)) continue;
-            await sql.unsafe(readFileSync(join(from, file), 'utf8'));
-            await sql`
-                insert into flow.migrations (id) values (${file})
-                on conflict (id) do nothing`;
+            await db.query(readFileSync(join(from, file), 'utf8'));
+            await db.query(
+                'insert into flow.migrations (id) values ($1) on conflict (id) do nothing',
+                [file],
+            );
             ran.push(file);
         }
         return ran;
     } finally {
-        await sql.end();
+        await db.end();
     }
 };
