@@ -1,0 +1,41 @@
+$topbar-h: 3.5rem;
+$drawer-w: 15rem;
+
+:host {
+    display: block;
+}
+
+.shell {
+    height: 100vh;
+    height: 100dvh;
+    display: grid;
+    grid-template-columns: $drawer-w 1fr;
+    grid-template-rows: $topbar-h 1fr;
+    grid-template-areas:
+        'topbar topbar'
+        'drawer main';
+    overflow: hidden;
+}
+
+app-header {
+    grid-area: topbar;
+    z-index: 30;
+}
+
+app-drawer {
+    grid-area: drawer;
+    overflow-y: auto;
+}
+
+.main {
+    grid-area: main;
+    min-width: 0;
+    overflow-y: auto;
+    background: var(--bg);
+}
+
+.content {
+    max-width: 67.5rem;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+}

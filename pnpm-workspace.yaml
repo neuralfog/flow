@@ -1,5 +1,7 @@
 packages:
   - 'packages/*'
+overrides:
+  '@neuralfog/elemix-template-formatter-linux-x64': 'link:../elemix/packages/formatter/npm/linux-x64'
 allowBuilds:
   '@parcel/watcher': false
 minimumReleaseAgeExclude:

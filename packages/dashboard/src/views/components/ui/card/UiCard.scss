@@ -1,0 +1,27 @@
+:host {
+    display: block;
+}
+
+.card {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: var(--text-base);
+    line-height: 1.5;
+}
+
+.card-header {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border);
+}
+
+.card-body {
+    padding: var(--space-4);
+}
+
+.card-footer {
+    padding: var(--space-3) var(--space-4);
+    border-top: 1px solid var(--border);
+}

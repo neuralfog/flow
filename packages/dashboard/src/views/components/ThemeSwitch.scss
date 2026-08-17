@@ -1,0 +1,39 @@
+@use '#src/views/scss/mixins' as *;
+
+:host {
+    display: inline-flex;
+}
+
+.switch {
+    display: inline-flex;
+    gap: 0.125rem;
+    padding: var(--space-1);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(6px);
+}
+
+.opt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-1) var(--space-2);
+    color: var(--text-muted);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition:
+        color 0.15s ease,
+        background 0.15s ease;
+
+    &:hover {
+        color: var(--text);
+    }
+
+    &.is-active {
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+}

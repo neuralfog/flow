@@ -13,7 +13,7 @@ export class DbClient {
             database: db.database,
             ssl: db.ssl ? { rejectUnauthorized: false } : undefined,
         });
-        console.log("[PG] Connection pool created")
+        console.log('[PG] Connection pool created');
     }
 
     async query<T extends QueryResultRow = QueryResultRow>(

@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    overflow: hidden;
+    background: var(--surface);
+    color: var(--text);
+    font-size: var(--text-base);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.table {
+    display: table;
+    width: 100%;
+    border-spacing: 0;
+}
+
+slot {
+    display: contents;
+}

@@ -1,7 +1,12 @@
 {
     "$schema": "https://biomejs.dev/schemas/2.5.5/schema.json",
     "files": {
-        "includes": ["**", "!**/node_modules/**/*", "!**/dist/**/*"]
+        "includes": [
+            "**",
+            "!**/node_modules/**/*",
+            "!**/dist/**/*",
+            "!**/public/_elemix/**/*"
+        ]
     },
     "formatter": {
         "enabled": true,
@@ -9,7 +14,12 @@
         "indentWidth": 4,
         "lineWidth": 80,
         "formatWithErrors": true,
-        "includes": ["**", "!**/node_modules/**/*", "!**/dist/**/*"]
+        "includes": [
+            "**",
+            "!**/node_modules/**/*",
+            "!**/dist/**/*",
+            "!**/public/_elemix/**/*"
+        ]
     },
     "javascript": {
         "formatter": {

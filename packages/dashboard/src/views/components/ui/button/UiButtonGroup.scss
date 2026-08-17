@@ -1,0 +1,28 @@
+:host {
+    display: inline-flex;
+    width: fit-content;
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+}
+
+::slotted(ui-button) {
+    --control-radius: 0;
+}
+
+::slotted(ui-button:first-child) {
+    --control-radius: var(--radius) 0 0 var(--radius);
+}
+
+::slotted(ui-button:last-child) {
+    --control-radius: 0 var(--radius) var(--radius) 0;
+}
+
+::slotted(ui-button:only-child) {
+    --control-radius: var(--radius);
+}
+
+::slotted(ui-button:focus-within) {
+    position: relative;
+    z-index: 1;
+}

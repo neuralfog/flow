@@ -1,0 +1,12 @@
+:host {
+    display: table-cell;
+    padding: var(--space-3) var(--space-4);
+    vertical-align: middle;
+    text-align: left;
+    color: var(--text);
+    border-top: 1px solid var(--border);
+}
+
+slot {
+    display: contents;
+}

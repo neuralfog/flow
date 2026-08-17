@@ -1,0 +1,34 @@
+@use '#src/views/scss/mixins' as *;
+
+:host {
+    display: inline-block;
+}
+
+.input {
+    height: var(--control-h);
+    font: var(--font-normal) var(--text-base)/1 var(--font);
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--control-radius, var(--radius));
+    background: var(--surface);
+    color: var(--text);
+    min-width: 13.75rem;
+    transition:
+        border-color 120ms ease,
+        box-shadow 120ms ease;
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    &:focus {
+        border-color: var(--accent);
+        @include focus-ring;
+    }
+
+    &--sm {
+        height: var(--control-h-sm);
+        padding: 0 var(--space-2);
+        font-size: var(--text-sm);
+    }
+}

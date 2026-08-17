@@ -1,0 +1,12 @@
+:host {
+    display: block;
+    padding: var(--space-4) var(--space-3);
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}

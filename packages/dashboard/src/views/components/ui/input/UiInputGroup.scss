@@ -1,0 +1,29 @@
+:host {
+    display: inline-flex;
+    width: fit-content;
+}
+
+::slotted(*) {
+    --control-radius: 0;
+}
+
+::slotted(*:first-child) {
+    --control-radius: var(--radius) 0 0 var(--radius);
+}
+
+::slotted(*:last-child) {
+    --control-radius: 0 var(--radius) var(--radius) 0;
+}
+
+::slotted(*:only-child) {
+    --control-radius: var(--radius);
+}
+
+::slotted(*:not(:first-child)) {
+    margin-left: -1px;
+}
+
+::slotted(*:focus-within) {
+    position: relative;
+    z-index: 1;
+}

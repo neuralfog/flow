@@ -1,0 +1,12 @@
+:host {
+    display: table-row;
+    transition: background 120ms ease;
+}
+
+:host(:hover) {
+    background: color-mix(in srgb, var(--surface), var(--text) 7%);
+}
+
+slot {
+    display: contents;
+}
