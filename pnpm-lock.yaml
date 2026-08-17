@@ -6,7 +6,9 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  packages/flow:
     dependencies:
       pg:
         specifier: 8.23.0

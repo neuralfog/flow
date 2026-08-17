@@ -1,44 +1,19 @@
 {
-    "name": "@neuralfog/flow",
+    "name": "flow-monorepo",
     "version": "0.1.0",
+    "private": true,
     "license": "MIT",
     "author": "brownhounds",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/neuralfog/flow.git"
-    },
     "type": "module",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "bin": {
-        "flow": "./dist/cli.js"
-    },
-    "files": [
-        "./dist/**/*",
-        "./migrations/**/*",
-        "CHANGELOG.md"
-    ],
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.js"
-        }
-    },
     "scripts": {
-        "clean": "rm -rf ./dist",
-        "build": "npm run clean && tsc -p tsconfig.build.json",
-        "test": "bun test",
-        "lint": "tsc --noEmit && biome format && biome lint --error-on-warnings",
-        "lint:fix": "biome format --write . && biome lint --write . --error-on-warnings && tsc --noEmit"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "2.5.5",
-        "@neuralfog/ts-config": "0.1.2",
-        "@types/bun": "1.3.14",
-        "@types/pg": "8.21.0",
-        "typescript": "7.0.2"
-    },
-    "dependencies": {
-        "pg": "8.23.0"
+        "build": "pnpm -r build",
+        "test": "pnpm -r --no-bail run test",
+        "lint": "pnpm -r lint",
+        "lint:fix": "pnpm -r run lint:fix",
+        "changelog:lint": "node scripts/changelog.mjs lint",
+        "changelog:check": "node scripts/changelog.mjs check",
+        "bump": "node scripts/bump.mjs",
+        "tag": "node scripts/tag.mjs",
+        "tag-remove": "node scripts/tag-remove.mjs"
     }
 }
