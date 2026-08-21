@@ -9,6 +9,8 @@ import '#src/views/components/ui/badge/UiBadge';
 import '#src/views/components/ui/card/UiCard';
 import '#src/views/components/ui/input/UiInput';
 import '#src/views/components/ui/input/UiInputGroup';
+import '#src/views/components/ui/scrollable/UiScrollable';
+import '#src/views/components/icons/IconLogo';
 import '#src/views/components/ui/table/UiTable';
 import '#src/views/components/ui/table/UiTableHead';
 import '#src/views/components/ui/table/UiTableBody';
@@ -26,10 +28,19 @@ export class HomePage extends Component {
             <h1 class="title">Components</h1>
             <p class="subtitle">Flow dashboard design system</p>
             <div class="section">
+                <h2>Logo</h2>
+                <div class="row" style="align-items: center; gap: 1rem">
+                    <icon-logo :size=${64} />
+                    <icon-logo :size=${40} />
+                    <icon-logo :size=${24} />
+                </div>
+            </div>
+            <div class="section">
                 <h2>Buttons</h2>
                 <div class="row" style="margin-bottom: 1rem">
                     <ui-button :label=${'Primary'} :variant=${'primary'} />
                     <ui-button :label=${'Secondary'} :variant=${'secondary'} />
+                    <ui-button :label=${'Outline'} :variant=${'outline'} />
                     <ui-button
                         :label=${'Disabled'}
                         :variant=${'primary'}
@@ -45,6 +56,11 @@ export class HomePage extends Component {
                     <ui-button
                         :label=${'Secondary'}
                         :variant=${'secondary'}
+                        :size=${'sm'}
+                    />
+                    <ui-button
+                        :label=${'Outline'}
+                        :variant=${'outline'}
                         :size=${'sm'}
                     />
                 </div>
@@ -192,6 +208,23 @@ export class HomePage extends Component {
                         </ui-table-row>
                     </ui-table-body>
                 </ui-table>
+            </div>
+            <div class="section">
+                <h2>Scrollable</h2>
+                <ui-card>
+                    <ui-scrollable :height=${'8rem'}>
+                        <p>Log line 1 - worker booted</p>
+                        <p>Log line 2 - claimed job send-email</p>
+                        <p>Log line 3 - job completed in 1.2s</p>
+                        <p>Log line 4 - claimed job build-report</p>
+                        <p>Log line 5 - still running</p>
+                        <p>Log line 6 - retry scheduled</p>
+                        <p>Log line 7 - claimed job sync-data</p>
+                        <p>Log line 8 - job failed</p>
+                        <p>Log line 9 - reconciling</p>
+                        <p>Log line 10 - idle</p>
+                    </ui-scrollable>
+                </ui-card>
             </div>
         </dashboard-layout>
     `;

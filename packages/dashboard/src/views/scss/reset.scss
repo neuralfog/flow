@@ -3,3 +3,31 @@
 *::after {
     box-sizing: border-box;
 }
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--secondary), transparent 55%)
+        transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--secondary), transparent 55%);
+    border-radius: var(--radius-pill);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--secondary), transparent 35%);
+}
+
+*::-webkit-scrollbar-corner {
+    background: transparent;
+}

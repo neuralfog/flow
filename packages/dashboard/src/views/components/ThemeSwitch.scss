@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--space-1) var(--space-2);
+    padding-bottom: 2px;
     color: var(--text-muted);
     background: transparent;
     border: 0;
@@ -33,7 +34,7 @@
     }
 
     &.is-active {
-        color: var(--accent);
-        background: color-mix(in srgb, var(--accent) 14%, transparent);
+        color: var(--secondary);
+        background: color-mix(in srgb, var(--secondary) 14%, transparent);
     }
 }

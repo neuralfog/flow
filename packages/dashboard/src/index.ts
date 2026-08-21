@@ -12,6 +12,7 @@ App.providers([Services]);
 
 App.document(AppDocument);
 App.resetStyles(reset);
+App.assets('assets', { dir: 'public' });
 
 if (env.get('NODE_ENV') === 'production') App.version(pkg.version);
 else App.devMode({ liveReload: true, watch: 'src' });

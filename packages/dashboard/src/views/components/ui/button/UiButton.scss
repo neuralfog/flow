@@ -67,6 +67,18 @@
         }
     }
 
+    &--outline {
+        --ring: var(--secondary);
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+
+        &:hover {
+            background: var(--surface-2);
+            border-color: color-mix(in srgb, var(--border), var(--text) 20%);
+        }
+    }
+
     &.is-disabled {
         opacity: 0.5;
         pointer-events: none;

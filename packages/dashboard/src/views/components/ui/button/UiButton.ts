@@ -4,7 +4,7 @@ import css from '#src/views/components/ui/button/UiButton.scss?inline';
 
 type Props = {
     label?: string;
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'outline';
     size?: 'default' | 'sm';
     disabled?: boolean;
     icon?: boolean;
