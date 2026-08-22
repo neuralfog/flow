@@ -1,0 +1,25 @@
+:host {
+    display: inline-flex;
+    gap: 0.75rem;
+    padding: 0.3125rem 0.625rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    font-weight: var(--font-normal);
+}
+
+.pair {
+    display: inline-flex;
+    align-items: center;
+}
+
+.label {
+    margin-right: 0.25rem;
+    color: var(--text-muted);
+}
+
+.value {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}

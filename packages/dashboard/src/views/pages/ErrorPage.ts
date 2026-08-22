@@ -5,6 +5,7 @@ import css from '#src/views/pages/ErrorPage.scss?inline';
 import '#src/views/components/icons/IconLogo';
 import '#src/views/components/ui/badge/UiBadge';
 import '#src/views/components/ui/button/UiButton';
+import { Status } from '#src/views/types/Status';
 
 export type ErrorData = {
     code: string;
@@ -29,7 +30,10 @@ export class ErrorPage extends Component<unknown, ErrorData> {
                     <icon-logo :size=${44} />
                     Flow
                 </a>
-                <ui-badge :label=${this.viewData.label} :tone=${'err'} />
+                <ui-badge
+                    :status=${Status.Failed}
+                    :label=${this.viewData.label}
+                />
                 <h1 class="err-code">${this.viewData.code}</h1>
                 <h2 class="err-title">${this.viewData.title}</h2>
                 <p class="err-desc">${this.viewData.message}</p>

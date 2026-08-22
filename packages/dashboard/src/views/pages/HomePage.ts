@@ -6,11 +6,16 @@ import '#src/views/layouts/DashboardLayout';
 import '#src/views/components/ui/button/UiButton';
 import '#src/views/components/ui/button/UiButtonGroup';
 import '#src/views/components/ui/badge/UiBadge';
+import '#src/views/components/ui/status/UiStatus';
+import { Status } from '#src/views/types/Status';
 import '#src/views/components/ui/card/UiCard';
 import '#src/views/components/ui/input/UiInput';
 import '#src/views/components/ui/input/UiInputGroup';
 import '#src/views/components/ui/scrollable/UiScrollable';
 import '#src/views/components/icons/IconLogo';
+import '#src/views/components/canvas/UiCanvas';
+import '#src/views/components/canvas/CanvasZoom';
+import '#src/views/components/canvas/CanvasCoordinates';
 import '#src/views/components/ui/table/UiTable';
 import '#src/views/components/ui/table/UiTableHead';
 import '#src/views/components/ui/table/UiTableBody';
@@ -108,15 +113,21 @@ export class HomePage extends Component {
             <div class="section">
                 <h2>Badges</h2>
                 <div class="row">
-                    <ui-badge :label=${'completed'} :tone=${'ok'} />
-                    <ui-badge
-                        :label=${'running'}
-                        :tone=${'info'}
-                        :pulse=${true}
-                    />
-                    <ui-badge :label=${'scheduled'} :tone=${'neutral'} />
-                    <ui-badge :label=${'timed_out'} :tone=${'warn'} />
-                    <ui-badge :label=${'failed'} :tone=${'err'} />
+                    <ui-badge :status=${Status.Scheduled} />
+                    <ui-badge :status=${Status.Running} :pulse=${true} />
+                    <ui-badge :status=${Status.Completed} />
+                    <ui-badge :status=${Status.TimedOut} />
+                    <ui-badge :status=${Status.Failed} />
+                </div>
+            </div>
+            <div class="section">
+                <h2>Status</h2>
+                <div class="row" style="gap: 1.5rem">
+                    <ui-status :status=${Status.Scheduled} />
+                    <ui-status :status=${Status.Running} />
+                    <ui-status :status=${Status.Completed} />
+                    <ui-status :status=${Status.TimedOut} />
+                    <ui-status :status=${Status.Failed} />
                 </div>
             </div>
             <div class="section">
@@ -181,7 +192,7 @@ export class HomePage extends Component {
                         <ui-table-row>
                             <ui-table-cell>send-email</ui-table-cell>
                             <ui-table-cell>
-                                <ui-badge :label=${'completed'} :tone=${'ok'} />
+                                <ui-badge :status=${Status.Completed} />
                             </ui-table-cell>
                             <ui-table-cell>worker-1</ui-table-cell>
                             <ui-table-cell>1.2s</ui-table-cell>
@@ -190,8 +201,7 @@ export class HomePage extends Component {
                             <ui-table-cell>build-report</ui-table-cell>
                             <ui-table-cell>
                                 <ui-badge
-                                    :label=${'running'}
-                                    :tone=${'info'}
+                                    :status=${Status.Running}
                                     :pulse=${true}
                                 />
                             </ui-table-cell>
@@ -201,7 +211,7 @@ export class HomePage extends Component {
                         <ui-table-row>
                             <ui-table-cell>sync-data</ui-table-cell>
                             <ui-table-cell>
-                                <ui-badge :label=${'failed'} :tone=${'err'} />
+                                <ui-badge :status=${Status.Failed} />
                             </ui-table-cell>
                             <ui-table-cell>worker-1</ui-table-cell>
                             <ui-table-cell>0.4s</ui-table-cell>
@@ -225,6 +235,21 @@ export class HomePage extends Component {
                         <p>Log line 10 - idle</p>
                     </ui-scrollable>
                 </ui-card>
+            </div>
+            <div class="section">
+                <h2>Canvas</h2>
+                <div class="canvas-frame">
+                    <ui-canvas>
+                        <ui-card>
+                            <span slot="header">Drag to pan</span> Scroll to
+                            zoom, or use the controls top-right. The live
+                            position shows bottom-left.
+                            <span slot="footer">Canvas demo</span>
+                        </ui-card>
+                        <canvas-zoom slot="zoom" />
+                        <canvas-coordinates slot="coordinates" />
+                    </ui-canvas>
+                </div>
             </div>
         </dashboard-layout>
     `;

@@ -1,0 +1,15 @@
+:host {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.label {
+    min-width: 3rem;
+    text-align: center;
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    user-select: none;
+}

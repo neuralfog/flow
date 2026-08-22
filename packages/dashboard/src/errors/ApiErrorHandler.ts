@@ -3,7 +3,7 @@ import {
     HttpException,
     statusOf,
 } from '@neuralfog/hydris/errors';
-import { type Request, Reply } from '@neuralfog/hydris/http';
+import { Reply, type Request } from '@neuralfog/hydris/http';
 
 export class ApiErrorHandler extends ErrorHandler {
     render(error: unknown, _req: Request): Reply {
