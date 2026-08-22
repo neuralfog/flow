@@ -1,10 +1,11 @@
 import { Pool, type QueryResultRow } from 'pg';
 import { db } from '#src/config/db';
+import { Logger } from '#src/services/Logger';
 
 export class DbClient {
     private readonly pool: Pool;
 
-    constructor() {
+    constructor(private readonly logger: Logger) {
         this.pool = new Pool({
             host: db.host,
             port: db.port,
@@ -13,7 +14,7 @@ export class DbClient {
             database: db.database,
             ssl: db.ssl ? { rejectUnauthorized: false } : undefined,
         });
-        console.log('[PG] Connection pool created');
+        this.logger.info('connection pool created');
     }
 
     async query<T extends QueryResultRow = QueryResultRow>(
