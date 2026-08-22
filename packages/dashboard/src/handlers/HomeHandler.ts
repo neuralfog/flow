@@ -1,6 +1,6 @@
 import { Reply } from '@neuralfog/hydris/http';
 import { DbClient } from '#src/services/DbClient';
-import { HomePage } from '#src/views/pages/HomePage.js';
+import { HomePage } from '#src/views/pages/HomePage';
 
 export class HomeHandler {
     async index(db: DbClient): Promise<Reply> {

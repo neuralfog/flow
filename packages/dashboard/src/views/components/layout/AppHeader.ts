@@ -11,7 +11,10 @@ export class AppHeader extends Component {
     styles = css;
 
     override template = (): Template => tpl`
-        <a class="brand" href="/"><icon-logo :size=${24} /> Flow</a>
+        <a class="brand" href="/">
+            <icon-logo :size=${24} />
+            Flow
+        </a>
         <div class="end">
             <theme-switch />
         </div>

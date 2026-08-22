@@ -46,18 +46,23 @@ export class IconLogo extends Component<Props> {
                     />
                 </mask>
             </defs>
-
             <g mask="url(#flowCut)">
-                <path d="M9 24 V30.5 A10 3 0 0 0 29 30.5 V24 A10 3 0 0 1 9 24 Z" fill="#64748b" />
+                <path
+                    d="M9 24 V30.5 A10 3 0 0 0 29 30.5 V24 A10 3 0 0 1 9 24 Z"
+                    fill="#64748b"
+                />
                 <ellipse cx="19" cy="24" rx="10" ry="3" fill="#94a3b8" />
-
-                <path d="M9 16 V22.5 A10 3 0 0 0 29 22.5 V16 A10 3 0 0 1 9 16 Z" fill="#64748b" />
+                <path
+                    d="M9 16 V22.5 A10 3 0 0 0 29 22.5 V16 A10 3 0 0 1 9 16 Z"
+                    fill="#64748b"
+                />
                 <ellipse cx="19" cy="16" rx="10" ry="3" fill="#94a3b8" />
-
-                <path d="M9 8 V14.5 A10 3 0 0 0 29 14.5 V8 A10 3 0 0 1 9 8 Z" fill="#64748b" />
+                <path
+                    d="M9 8 V14.5 A10 3 0 0 0 29 14.5 V8 A10 3 0 0 1 9 8 Z"
+                    fill="#64748b"
+                />
                 <ellipse cx="19" cy="8" rx="10" ry="3" fill="#94a3b8" />
             </g>
-
             <path
                 d="M29 10 C 29 10, 38 22, 38 28 a 9 9 0 1 1 -18 0 C 20 22, 29 10, 29 10 Z"
                 fill="url(#flowDrop)"

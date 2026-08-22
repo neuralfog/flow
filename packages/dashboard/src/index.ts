@@ -1,12 +1,18 @@
 import { App } from '@neuralfog/hydris';
 import { env } from '@neuralfog/hydris/config';
 import { server } from '#src/config/server';
+import { WebErrorHandler } from '#src/errors/WebErrorHandler.js';
+import { ApiErrorHandler } from '#src/errors/ApiErrorHandler.js';
 import { Services } from '#src/services';
 import { AppDocument } from '#src/views/documents/AppDocument';
 import reset from '#src/views/scss/reset.scss?inline';
 import pkg from '../package.json' with { type: 'json' };
 
 import '#src/routes/web';
+import '#src/routes/api';
+
+App.renderError('web', WebErrorHandler);
+App.renderError('api', ApiErrorHandler);
 
 App.providers([Services]);
 

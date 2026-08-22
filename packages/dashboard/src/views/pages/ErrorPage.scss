@@ -1,0 +1,83 @@
+:host {
+    display: block;
+}
+
+.err {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+    font-family: var(--font);
+    background-color: var(--bg);
+    background-image:
+        linear-gradient(
+            color-mix(in srgb, var(--border), transparent 40%) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--border), transparent 40%) 1px,
+            transparent 1px
+        );
+    background-size: 1.5rem 1.5rem;
+}
+
+.err-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+    font-size: 1.875rem;
+    font-weight: var(--font-bold);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.err-card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 32rem;
+    text-align: center;
+}
+
+.err-card ui-badge {
+    margin-bottom: 1.5rem;
+}
+
+.err-code {
+    margin: 0 0 1rem;
+    font-size: clamp(4.5rem, 14vw, 7rem);
+    font-weight: var(--font-bold);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: var(--text);
+}
+
+.err-title {
+    margin: 0 0 0.75rem;
+    font-size: 1.75rem;
+    font-weight: var(--font-bold);
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.err-desc {
+    margin: 0 0 2rem;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+.err-actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    justify-content: center;
+}
