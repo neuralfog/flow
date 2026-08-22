@@ -1,24 +1,13 @@
-import { Reply, Request } from '@neuralfog/hydris/http';
-import { DbClient } from '#src/services/DbClient';
-import { Logger } from '#src/services/Logger.js';
-import { CanvasPage } from '#src/views/pages/CanvasPage';
+import { Reply } from '@neuralfog/hydris/http';
+import { DagPage } from '#src/views/pages/DagPage';
 import { HomePage } from '#src/views/pages/HomePage';
 
 export class HomeHandler {
-    constructor(private logger: Logger) {}
-
-    async index(db: DbClient, req: Request): Promise<Reply> {
-        try {
-            const ok = await db.ping();
-            this.logger.info('ping', { status: ok, requestId: req.id });
-        } catch (error) {
-            this.logger.error('ping', error);
-        }
-
+    index(): Reply {
         return Reply.view(HomePage);
     }
 
-    canvas(): Reply {
-        return Reply.view(CanvasPage);
+    dagGraph(): Reply {
+        return Reply.view(DagPage);
     }
 }

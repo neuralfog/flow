@@ -1,18 +1,18 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import css from '#src/views/pages/CanvasPage.scss?inline';
+import css from '#src/views/pages/DagPage.scss?inline';
 
 import '#src/views/layouts/DashboardLayout';
+import '#src/views/components/dag/DagGraph';
 
 // #component
-export class CanvasPage extends Component {
+export class DagPage extends Component {
     // #styles
     styles = css;
 
     override template = (): Template => tpl`
         <dashboard-layout>
-            <h1 class="title">Canvas</h1>
-            <p class="subtitle">Hello world</p>
+            <dag-graph />
         </dashboard-layout>
     `;
 }

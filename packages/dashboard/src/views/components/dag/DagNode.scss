@@ -1,0 +1,13 @@
+:host {
+    display: contents;
+}
+
+.node {
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.node ui-card {
+    width: 100%;
+}

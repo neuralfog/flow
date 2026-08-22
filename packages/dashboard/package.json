@@ -19,17 +19,17 @@
         "lint:fix": "biome check --write . && etf --dirs src --write"
     },
     "devDependencies": {
-        "@neuralfog/elemix-analyzer": "0.9.4",
-        "@neuralfog/elemix-template-formatter": "0.9.4",
+        "@neuralfog/elemix-analyzer": "0.9.5",
+        "@neuralfog/elemix-template-formatter": "0.9.5",
         "@biomejs/biome": "2.5.5",
         "@types/bun": "1.3.14",
         "@types/pg": "8.23.1",
         "typescript": "7.0.2"
     },
     "dependencies": {
-        "@neuralfog/elemix": "link:../../../elemix/packages/elemix",
-        "@neuralfog/elemix-ssr-plugin": "link:../../../elemix/packages/ssr-plugin",
-        "@neuralfog/hydris": "link:../../../elemix/packages/hydris",
+        "@neuralfog/elemix": "0.9.5",
+        "@neuralfog/elemix-ssr-plugin": "0.9.5",
+        "@neuralfog/hydris": "0.9.5",
         "@neuralfog/flow": "workspace:*",
         "pg": "8.23.0"
     }
