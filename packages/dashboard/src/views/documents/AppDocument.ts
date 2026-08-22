@@ -10,7 +10,7 @@ const fonts = fontFace({
     family: 'Space Grotesk',
     src: 'src/views/fonts/SpaceGrotesk.woff2',
     weight: '400 700',
-    display: 'swap',
+    display: 'block',
 });
 
 // #document

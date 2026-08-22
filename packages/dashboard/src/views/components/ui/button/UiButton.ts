@@ -36,7 +36,8 @@ export class UiButton extends Component<Props> {
 
     override template = (): Template => tpl`
         <button
-            class="btn btn--${this.props.variant ?? 'primary'}${this.props.size === 'sm' ? ' btn--sm' : ''}${this.props.icon ? ' btn--icon' : ''}${this.props.disabled ? ' is-disabled' : ''}"
+            class="btn btn--${this.props.variant ?? 'primary'}${this.props.size === 'sm' ? ' btn--sm' : ''}${this.props.icon ? ' btn--icon' : ''}"
+            disabled=${this.props.disabled ?? false}
             @pointerdown=${this.ripple}
         >${this.props.label ?? ''}<slot></slot></button>
     `;
