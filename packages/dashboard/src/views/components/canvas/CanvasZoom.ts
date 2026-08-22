@@ -6,6 +6,8 @@ import {
     canvas,
     clampZoom,
     resetCanvas,
+    ZOOM_MAX,
+    ZOOM_MIN,
     ZOOM_STEP,
 } from '#src/views/components/canvas/canvas';
 
@@ -16,6 +18,14 @@ export class CanvasZoom extends Component {
 
     private get label(): string {
         return `${Math.round(canvas.zoom * 100)}%`;
+    }
+
+    private get atMin(): boolean {
+        return canvas.zoom <= ZOOM_MIN;
+    }
+
+    private get atMax(): boolean {
+        return canvas.zoom >= ZOOM_MAX;
     }
 
     private zoomOut = (): void => {
@@ -35,6 +45,7 @@ export class CanvasZoom extends Component {
             :icon=${true}
             :variant=${'outline'}
             :size=${'sm'}
+            :disabled=${this.atMin}
             @click=${this.zoomOut}
         >
             <svg
@@ -54,6 +65,7 @@ export class CanvasZoom extends Component {
             :icon=${true}
             :variant=${'outline'}
             :size=${'sm'}
+            :disabled=${this.atMax}
             @click=${this.zoomIn}
         >
             <svg

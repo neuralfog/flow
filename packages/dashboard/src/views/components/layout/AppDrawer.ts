@@ -16,6 +16,7 @@ const NAV: NavEntry[] = [
     { label: 'Workers', href: '/workers' },
     { label: 'Schedules', href: '/schedules' },
     { label: 'Components', href: '/components' },
+    { label: 'Canvas', href: '/canvas' },
 ];
 
 // #component

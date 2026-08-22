@@ -1,10 +1,11 @@
 import { Reply, Request } from '@neuralfog/hydris/http';
 import { DbClient } from '#src/services/DbClient';
-import { HomePage } from '#src/views/pages/HomePage';
 import { Logger } from '#src/services/Logger.js';
+import { CanvasPage } from '#src/views/pages/CanvasPage';
+import { HomePage } from '#src/views/pages/HomePage';
 
 export class HomeHandler {
-    constructor(private logger:Logger) {}
+    constructor(private logger: Logger) {}
 
     async index(db: DbClient, req: Request): Promise<Reply> {
         try {
@@ -15,5 +16,9 @@ export class HomeHandler {
         }
 
         return Reply.view(HomePage);
+    }
+
+    canvas(): Reply {
+        return Reply.view(CanvasPage);
     }
 }

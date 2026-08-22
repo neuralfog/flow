@@ -1,0 +1,15 @@
+:host {
+    display: block;
+}
+
+.title {
+    font: var(--font-bold) 1.5rem/1.2 var(--font);
+    margin: 0 0 0.25rem;
+    color: var(--text);
+}
+
+.subtitle {
+    margin: 0 0 2rem;
+    font-size: var(--text-base);
+    color: var(--text-muted);
+}
