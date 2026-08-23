@@ -17,10 +17,6 @@
         color-mix(in srgb, var(--status-color) 26%, transparent);
 }
 
-.label {
-    transform: translateY(-1px);
-}
-
 .dot {
     width: 0.375rem;
     height: 0.375rem;

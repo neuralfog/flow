@@ -23,6 +23,10 @@ export class ErrorPage extends Component<unknown, ErrorData> {
         location.href = '/';
     };
 
+    back = (): void => {
+        history.back();
+    };
+
     override template = (): Template => tpl`
         <div class="err">
             <div class="err-card">
@@ -38,6 +42,11 @@ export class ErrorPage extends Component<unknown, ErrorData> {
                 <h2 class="err-title">${this.viewData.title}</h2>
                 <p class="err-desc">${this.viewData.message}</p>
                 <div class="err-actions">
+                    <ui-button
+                        :label=${'Go back'}
+                        :variant=${'outline'}
+                        @click=${this.back}
+                    />
                     <ui-button
                         :label=${'Take me home'}
                         :variant=${'primary'}

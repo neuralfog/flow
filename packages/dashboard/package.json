@@ -27,9 +27,9 @@
         "typescript": "7.0.2"
     },
     "dependencies": {
-        "@neuralfog/elemix": "0.9.5",
-        "@neuralfog/elemix-ssr-plugin": "0.9.5",
-        "@neuralfog/hydris": "0.9.5",
+        "@neuralfog/elemix": "link:../../../elemix/packages/elemix",
+        "@neuralfog/elemix-ssr-plugin": "link:../../../elemix/packages/ssr-plugin",
+        "@neuralfog/hydris": "link:../../../elemix/packages/hydris",
         "@neuralfog/flow": "workspace:*",
         "pg": "8.23.0"
     }

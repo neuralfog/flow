@@ -1,17 +1,10 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import { asset, fontFace } from '@neuralfog/hydris';
+import { asset } from '@neuralfog/hydris';
 import css from '#src/views/documents/AppDocument.scss?inline';
 
 const themeInit =
     "(function(){try{var p=localStorage.getItem('themePref');if(p){document.documentElement.dataset.themePref=p;if(p!=='system')document.documentElement.dataset.theme=p;}}catch(e){}})();";
-
-const fonts = fontFace({
-    family: 'Space Grotesk',
-    src: 'src/views/fonts/SpaceGrotesk.woff2',
-    weight: '400 700',
-    display: 'block',
-});
 
 // #document
 export class AppDocument extends Component {
@@ -29,8 +22,25 @@ export class AppDocument extends Component {
                     type="image/svg+xml"
                     href="${asset('/assets/favicon.svg')}"
                 />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossorigin
+                />
+                <link
+                    rel="preload"
+                    as="font"
+                    type="font/woff2"
+                    href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2"
+                    crossorigin
+                />
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap"
+                />
                 <script>${themeInit}</script>
-                <style>${fonts}${css}</style>
+                <style>${css}</style>
             </head>
             <body>
                 <slot />
