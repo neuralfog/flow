@@ -1,12 +1,11 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
 import css from '#src/views/components/ui/badge/UiBadge.scss?inline';
-import { Status } from '#src/views/types/Status';
-import { statusText } from '#src/views/utils/statusText';
 
 type Props = {
-    status: Status;
-    label?: string;
+    label: string;
+    variant?: 'neutral' | 'info' | 'success' | 'warn' | 'error';
+    dot?: boolean;
     pulse?: boolean;
 };
 
@@ -17,12 +16,10 @@ export class UiBadge extends Component<Props> {
 
     override template = (): Template => tpl`
         <span
-            class="badge badge--${this.props.status}${this.props.pulse ? ' is-pulsing' : ''}"
+            class="badge badge--${this.props.variant ?? 'neutral'}${this.props.pulse ? ' is-pulsing' : ''}"
         >
-            <span class="dot"></span>
-            <span
-                class="label"
-            >${this.props.label ?? statusText(this.props.status)}</span>
+            ${this.props.dot ? tpl`<span class="dot"></span>` : ''}
+            <span class="label">${this.props.label}</span>
         </span>
     `;
 }

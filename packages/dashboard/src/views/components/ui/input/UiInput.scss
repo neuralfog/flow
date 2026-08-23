@@ -14,8 +14,8 @@
     color: var(--text);
     min-width: 13.75rem;
     transition:
-        border-color 120ms ease,
-        box-shadow 120ms ease;
+        border-color var(--motion) ease,
+        box-shadow var(--motion) ease;
 
     &::placeholder {
         color: var(--text-muted);

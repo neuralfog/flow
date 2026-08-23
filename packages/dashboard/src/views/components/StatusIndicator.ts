@@ -1,6 +1,6 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import css from '#src/views/components/ui/status/UiStatus.scss?inline';
+import css from '#src/views/components/StatusIndicator.scss?inline';
 import { Status } from '#src/views/types/Status';
 import { statusText } from '#src/views/utils/statusText';
 
@@ -16,7 +16,7 @@ type Props = {
 };
 
 // #component
-export class UiStatus extends Component<Props> {
+export class StatusIndicator extends Component<Props> {
     // #styles
     styles = css;
 

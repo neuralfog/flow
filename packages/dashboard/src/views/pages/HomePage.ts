@@ -5,8 +5,8 @@ import css from '#src/views/pages/HomePage.scss?inline';
 import '#src/views/layouts/DashboardLayout';
 import '#src/views/components/ui/button/UiButton';
 import '#src/views/components/ui/button/UiButtonGroup';
-import '#src/views/components/ui/badge/UiBadge';
-import '#src/views/components/ui/status/UiStatus';
+import '#src/views/components/StatusBadge';
+import '#src/views/components/StatusIndicator';
 import { Status } from '#src/views/types/Status';
 import '#src/views/components/ui/card/UiCard';
 import '#src/views/components/ui/input/UiInput';
@@ -113,21 +113,21 @@ export class HomePage extends Component {
             <div class="section">
                 <h2>Badges</h2>
                 <div class="row">
-                    <ui-badge :status=${Status.Scheduled} />
-                    <ui-badge :status=${Status.Running} :pulse=${true} />
-                    <ui-badge :status=${Status.Completed} />
-                    <ui-badge :status=${Status.TimedOut} />
-                    <ui-badge :status=${Status.Failed} />
+                    <status-badge :status=${Status.Scheduled} />
+                    <status-badge :status=${Status.Running} :pulse=${true} />
+                    <status-badge :status=${Status.Completed} />
+                    <status-badge :status=${Status.TimedOut} />
+                    <status-badge :status=${Status.Failed} />
                 </div>
             </div>
             <div class="section">
                 <h2>Status</h2>
                 <div class="row" style="gap: 1.5rem">
-                    <ui-status :status=${Status.Scheduled} />
-                    <ui-status :status=${Status.Running} />
-                    <ui-status :status=${Status.Completed} />
-                    <ui-status :status=${Status.TimedOut} />
-                    <ui-status :status=${Status.Failed} />
+                    <status-indicator :status=${Status.Scheduled} />
+                    <status-indicator :status=${Status.Running} />
+                    <status-indicator :status=${Status.Completed} />
+                    <status-indicator :status=${Status.TimedOut} />
+                    <status-indicator :status=${Status.Failed} />
                 </div>
             </div>
             <div class="section">
@@ -192,7 +192,7 @@ export class HomePage extends Component {
                         <ui-table-row>
                             <ui-table-cell>send-email</ui-table-cell>
                             <ui-table-cell>
-                                <ui-badge :status=${Status.Completed} />
+                                <status-badge :status=${Status.Completed} />
                             </ui-table-cell>
                             <ui-table-cell>worker-1</ui-table-cell>
                             <ui-table-cell>1.2s</ui-table-cell>
@@ -200,7 +200,7 @@ export class HomePage extends Component {
                         <ui-table-row>
                             <ui-table-cell>build-report</ui-table-cell>
                             <ui-table-cell>
-                                <ui-badge
+                                <status-badge
                                     :status=${Status.Running}
                                     :pulse=${true}
                                 />
@@ -211,7 +211,7 @@ export class HomePage extends Component {
                         <ui-table-row>
                             <ui-table-cell>sync-data</ui-table-cell>
                             <ui-table-cell>
-                                <ui-badge :status=${Status.Failed} />
+                                <status-badge :status=${Status.Failed} />
                             </ui-table-cell>
                             <ui-table-cell>worker-1</ui-table-cell>
                             <ui-table-cell>0.4s</ui-table-cell>

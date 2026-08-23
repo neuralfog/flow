@@ -9,10 +9,15 @@ export const storedPref = (): ThemePref =>
 
 export const applyTheme = (pref: ThemePref): void => {
     const root = document.documentElement;
+    root.style.setProperty('--motion', '0s');
     root.dataset.themePref = pref;
     if (pref === 'system') delete root.dataset.theme;
     else root.dataset.theme = pref;
     localStorage.setItem(STORAGE_KEY, pref);
+    void root.offsetHeight;
+    requestAnimationFrame(() => {
+        root.style.removeProperty('--motion');
+    });
 };
 
 export const watchSystemTheme = (onChange: () => void): void => {

@@ -1,6 +1,6 @@
 :host {
     display: table-row;
-    transition: background 120ms ease;
+    transition: background var(--motion) ease;
 }
 
 :host(:hover) {

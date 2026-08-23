@@ -26,8 +26,8 @@
     border-radius: var(--radius);
     cursor: pointer;
     transition:
-        color 0.15s ease,
-        background 0.15s ease;
+        color var(--motion) ease,
+        background var(--motion) ease;
 
     &:hover {
         color: var(--text);

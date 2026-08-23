@@ -5,7 +5,6 @@ import css from '#src/views/pages/ErrorPage.scss?inline';
 import '#src/views/components/icons/IconLogo';
 import '#src/views/components/ui/badge/UiBadge';
 import '#src/views/components/ui/button/UiButton';
-import { Status } from '#src/views/types/Status';
 
 export type ErrorData = {
     code: string;
@@ -35,8 +34,10 @@ export class ErrorPage extends Component<unknown, ErrorData> {
                     Flow
                 </a>
                 <ui-badge
-                    :status=${Status.Failed}
                     :label=${this.viewData.label}
+                    :variant=${'error'}
+                    :dot=${true}
+                    :pulse=${true}
                 />
                 <h1 class="err-code">${this.viewData.code}</h1>
                 <h2 class="err-title">${this.viewData.title}</h2>
