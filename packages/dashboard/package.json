@@ -19,7 +19,7 @@
         "lint:fix": "biome check --write . && etf --dirs src --write"
     },
     "devDependencies": {
-        "@neuralfog/elemix-analyzer": "0.9.5",
+        "@neuralfog/elemix-analyzer": "link:../../../elemix/packages/analyzer",
         "@neuralfog/elemix-template-formatter": "0.9.5",
         "@biomejs/biome": "2.5.5",
         "@types/bun": "1.3.14",

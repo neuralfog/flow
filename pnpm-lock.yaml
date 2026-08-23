@@ -33,8 +33,8 @@ importers:
         specifier: 2.5.5
         version: 2.5.5
       '@neuralfog/elemix-analyzer':
-        specifier: 0.9.5
-        version: 0.9.5
+        specifier: link:../../../elemix/packages/analyzer
+        version: link:../../../elemix/packages/analyzer
       '@neuralfog/elemix-template-formatter':
         specifier: 0.9.5
         version: 0.9.5
@@ -125,40 +125,6 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
-
-  '@neuralfog/elemix-analyzer-darwin-arm64@0.9.5':
-    resolution: {integrity: sha512-WJSGzKE8RbJ1MD6F8EcETBZZiU+e3duH3c6UmjVITloyW6frB6ZwEGKXfj8mg/mBY0OcNRwDchQiItIEn3MGTQ==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@neuralfog/elemix-analyzer-darwin-x64@0.9.5':
-    resolution: {integrity: sha512-EdMuE0SKcEtEPYfI8CpaYXUa7cWOIFWYxG+k7dfkojXTNwiSW1M4itanyhJgCs95dMmbgc8iZND5jkiEOeKOoQ==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@neuralfog/elemix-analyzer-linux-arm64@0.9.5':
-    resolution: {integrity: sha512-po7uWE4fmm6dOXccpFtrhc22WASECKKIJh47swm6TnFwa8P2qKD43vGcEtPuoqMQc+S3uwfJUHMGemlfVsglXA==}
-    cpu: [arm64]
-    os: [linux]
-
-  '@neuralfog/elemix-analyzer-linux-x64@0.9.5':
-    resolution: {integrity: sha512-MdbAUM3S3uLGOfMfn7IQB1kFKOx8hOnhIcZgvj4NdUXdlgMd+XEeyhNs6mkO+r2DOjDZ7o+0bt45fn1S27WULQ==}
-    cpu: [x64]
-    os: [linux]
-
-  '@neuralfog/elemix-analyzer-win32-arm64@0.9.5':
-    resolution: {integrity: sha512-BxaSbmBpNkGLvMEvPBmrNcp/yL/HFTbZMrj4YFO74W4XDQGWMySCszDDk4Szrj5Nn5RjX5Zo/yESsqRvQM5SBg==}
-    cpu: [arm64]
-    os: [win32]
-
-  '@neuralfog/elemix-analyzer-win32-x64@0.9.5':
-    resolution: {integrity: sha512-xlpb29Htt4j8Y0gJHIW4Ch7i9efLgTAbtQwVihVqfxwNjiQQi6GPIRAZAG1RI1BNQPLri8LI+yTIKFzE+pjDvg==}
-    cpu: [x64]
-    os: [win32]
-
-  '@neuralfog/elemix-analyzer@0.9.5':
-    resolution: {integrity: sha512-sej9p+uKlebTqXY+G6rngAdTtM44Ads9ZVDkqkR2o7geBqLmjIIFivAjQxkJ1y8zLZsCZ29nXXDQKW5hJqfPCA==}
-    hasBin: true
 
   '@neuralfog/elemix-template-formatter-darwin-arm64@0.9.5':
     resolution: {integrity: sha512-aQCQwH8ISNfhV4def/MUizp/ZNy9039QlRTUdWnDNQAPfnE+91u3Lm98DMDxW/4avjG+VMj4TKTqBWWR6oljww==}
@@ -426,33 +392,6 @@ snapshots:
 
   '@biomejs/cli-win32-x64@2.5.5':
     optional: true
-
-  '@neuralfog/elemix-analyzer-darwin-arm64@0.9.5':
-    optional: true
-
-  '@neuralfog/elemix-analyzer-darwin-x64@0.9.5':
-    optional: true
-
-  '@neuralfog/elemix-analyzer-linux-arm64@0.9.5':
-    optional: true
-
-  '@neuralfog/elemix-analyzer-linux-x64@0.9.5':
-    optional: true
-
-  '@neuralfog/elemix-analyzer-win32-arm64@0.9.5':
-    optional: true
-
-  '@neuralfog/elemix-analyzer-win32-x64@0.9.5':
-    optional: true
-
-  '@neuralfog/elemix-analyzer@0.9.5':
-    optionalDependencies:
-      '@neuralfog/elemix-analyzer-darwin-arm64': 0.9.5
-      '@neuralfog/elemix-analyzer-darwin-x64': 0.9.5
-      '@neuralfog/elemix-analyzer-linux-arm64': 0.9.5
-      '@neuralfog/elemix-analyzer-linux-x64': 0.9.5
-      '@neuralfog/elemix-analyzer-win32-arm64': 0.9.5
-      '@neuralfog/elemix-analyzer-win32-x64': 0.9.5
 
   '@neuralfog/elemix-template-formatter-darwin-arm64@0.9.5':
     optional: true

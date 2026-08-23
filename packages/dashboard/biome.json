@@ -5,7 +5,7 @@
             "**",
             "!**/node_modules/**/*",
             "!**/dist/**/*",
-            "!**/public/_elemix/**/*"
+            "!**/public"
         ]
     },
     "formatter": {
@@ -18,7 +18,7 @@
             "**",
             "!**/node_modules/**/*",
             "!**/dist/**/*",
-            "!**/public/_elemix/**/*"
+            "!**/public/**"
         ]
     },
     "javascript": {

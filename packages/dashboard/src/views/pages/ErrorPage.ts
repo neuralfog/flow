@@ -2,6 +2,7 @@ import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
 import css from '#src/views/pages/ErrorPage.scss?inline';
 
+import '@neuralfog/hydris/navigation';
 import '#src/views/components/icons/IconLogo';
 import '#src/views/components/ui/badge/UiBadge';
 import '#src/views/components/ui/button/UiButton';
@@ -17,10 +18,6 @@ export type ErrorData = {
 export class ErrorPage extends Component<unknown, ErrorData> {
     // #styles
     styles = css;
-
-    home = (): void => {
-        location.href = '/';
-    };
 
     back = (): void => {
         history.back();
@@ -48,11 +45,12 @@ export class ErrorPage extends Component<unknown, ErrorData> {
                         :variant=${'outline'}
                         @click=${this.back}
                     />
-                    <ui-button
-                        :label=${'Take me home'}
-                        :variant=${'primary'}
-                        @click=${this.home}
-                    />
+                    <nav-link route="/">
+                        <ui-button
+                            :label=${'Take me home'}
+                            :variant=${'primary'}
+                        />
+                    </nav-link>
                 </div>
             </div>
         </div>

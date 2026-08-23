@@ -1,11 +1,11 @@
+import '@neuralfog/hydris/store';
+
 export type ThemePref = 'light' | 'dark' | 'system';
 
-const STORAGE_KEY = 'themePref';
+// #store user-prefs
+export const userPrefs = { theme: 'system' as ThemePref };
 
 const media = (): MediaQueryList => matchMedia('(prefers-color-scheme: dark)');
-
-export const storedPref = (): ThemePref =>
-    (document.documentElement.dataset.themePref as ThemePref) ?? 'system';
 
 export const applyTheme = (pref: ThemePref): void => {
     const root = document.documentElement;
@@ -13,7 +13,7 @@ export const applyTheme = (pref: ThemePref): void => {
     root.dataset.themePref = pref;
     if (pref === 'system') delete root.dataset.theme;
     else root.dataset.theme = pref;
-    localStorage.setItem(STORAGE_KEY, pref);
+    userPrefs.theme = pref;
     void root.offsetHeight;
     requestAnimationFrame(() => {
         root.style.removeProperty('--motion');

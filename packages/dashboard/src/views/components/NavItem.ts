@@ -2,6 +2,8 @@ import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
 import css from '#src/views/components/NavItem.scss?inline';
 
+import '@neuralfog/hydris/navigation';
+
 type Props = {
     label: string;
     href: string;
@@ -13,6 +15,11 @@ export class NavItem extends Component<Props> {
     styles = css;
 
     override template = (): Template => tpl`
-        <a class="menu-item" href="${this.props.href}">${this.props.label}</a>
+        <nav-link route="${this.props.href}">
+            <a
+                class="menu-item"
+                href="${this.props.href}"
+            >${this.props.label}</a>
+        </nav-link>
     `;
 }

@@ -17,6 +17,7 @@ const NAV: NavEntry[] = [
     { label: 'Schedules', href: '/schedules' },
     { label: 'Components', href: '/components' },
     { label: 'DAG Graph', href: '/dag' },
+    { label: 'Redirect', href: '/r' },
 ];
 
 // #component

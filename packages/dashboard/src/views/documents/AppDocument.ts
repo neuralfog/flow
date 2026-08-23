@@ -2,14 +2,31 @@ import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
 import { asset } from '@neuralfog/hydris';
 import css from '#src/views/documents/AppDocument.scss?inline';
+import { userPrefs } from '#src/views/utils/theme';
 
-const themeInit =
-    "(function(){try{var p=localStorage.getItem('themePref');if(p){document.documentElement.dataset.themePref=p;if(p!=='system')document.documentElement.dataset.theme=p;}}catch(e){}})();";
+const speculationRules = JSON.stringify({
+    prefetch: [
+        {
+            source: 'document',
+            where: {
+                and: [
+                    { href_matches: '/*' },
+                    { not: { href_matches: '/_elemix/*' } },
+                ],
+            },
+            eagerness: 'moderate',
+        },
+    ],
+});
 
 // #document
 export class AppDocument extends Component {
     override template = (): Template => tpl`
-        <html lang="en">
+        <html
+            lang="en"
+            data-theme-pref="${userPrefs.theme}"
+            data-theme="${userPrefs.theme === 'system' ? '' : userPrefs.theme}"
+        >
             <head>
                 <meta charset="utf-8" />
                 <meta
@@ -39,7 +56,7 @@ export class AppDocument extends Component {
                     rel="stylesheet"
                     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap"
                 />
-                <script>${themeInit}</script>
+                <script type="speculationrules">${speculationRules}</script>
                 <style>${css}</style>
             </head>
             <body>
