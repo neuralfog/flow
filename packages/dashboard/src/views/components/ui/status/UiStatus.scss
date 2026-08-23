@@ -19,10 +19,6 @@
     line-height: 0;
 }
 
-.icon svg {
-    display: block;
-}
-
 .status--scheduled .icon--scheduled,
 .status--running .icon--running,
 .status--completed .icon--completed,
@@ -51,52 +47,6 @@
     color: var(--warn);
 }
 
-.icon--scheduled .ring {
-    transform-origin: 8px 8px;
-    animation: status-spin 6s linear infinite;
-}
-
-.icon--scheduled .pip {
-    fill: currentColor;
-    transform-origin: 8px 8px;
-    animation: status-pulse 1.6s ease-in-out infinite;
-}
-
-.icon--running .track {
-    stroke: var(--border);
-}
-
-.icon--running .arc {
-    transform-origin: 8px 8px;
-    animation: status-spin 0.8s linear infinite;
-}
-
 .label:empty {
     display: none;
-}
-
-@keyframes status-spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes status-pulse {
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(0.55);
-        opacity: 0.45;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .icon--running .arc,
-    .icon--scheduled .ring,
-    .icon--scheduled .pip {
-        animation-duration: 3s;
-    }
 }

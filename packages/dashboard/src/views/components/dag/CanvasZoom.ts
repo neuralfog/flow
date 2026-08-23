@@ -2,6 +2,9 @@ import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
 import css from '#src/views/components/dag/CanvasZoom.scss?inline';
 import '#src/views/components/ui/button/UiButton';
+import '#src/views/components/icons/IconMinus';
+import '#src/views/components/icons/IconPlus';
+import '#src/views/components/icons/IconRefresh';
 import {
     canvas,
     clampZoom,
@@ -48,17 +51,7 @@ export class CanvasZoom extends Component {
             :disabled=${this.atMin}
             @click=${this.zoomOut}
         >
-            <svg
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-            >
-                <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
+            <icon-minus />
         </ui-button>
         <span class="label">${this.label}</span>
         <ui-button
@@ -68,18 +61,7 @@ export class CanvasZoom extends Component {
             :disabled=${this.atMax}
             @click=${this.zoomIn}
         >
-            <svg
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-            >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
+            <icon-plus />
         </ui-button>
         <ui-button
             :icon=${true}
@@ -87,22 +69,7 @@ export class CanvasZoom extends Component {
             :size=${'sm'}
             @click=${this.reset}
         >
-            <svg
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <polyline points="23 4 23 10 17 10" />
-                <polyline points="1 20 1 14 7 14" />
-                <path
-                    d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
-                />
-            </svg>
+            <icon-refresh />
         </ui-button>
     `;
 }

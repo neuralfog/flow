@@ -1,0 +1,20 @@
+.track {
+    stroke: var(--border);
+}
+
+.arc {
+    transform-origin: 8px 8px;
+    animation: status-spin 0.8s linear infinite;
+}
+
+@keyframes status-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arc {
+        animation-duration: 3s;
+    }
+}

@@ -1,10 +1,6 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import {
-    canvas,
-    clampZoom,
-    ZOOM_STEP,
-} from '#src/views/components/dag/canvas';
+import { canvas, clampZoom, ZOOM_STEP } from '#src/views/components/dag/canvas';
 import css from '#src/views/components/dag/DagCanvas.scss?inline';
 
 // #component

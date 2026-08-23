@@ -65,10 +65,12 @@ export class DagGraph extends Component {
                 (edge) => tpl`
                     ${repeat(
                         edge.segments,
-                        (wire) => tpl`<dag-wire
-                            :wire=${wire}
-                            :active=${this.edgeActive(edge.from, edge.to)}
-                        />`,
+                        (wire) => tpl`
+                            <dag-wire
+                                :wire=${wire}
+                                :active=${this.edgeActive(edge.from, edge.to)}
+                            />
+                        `,
                         (wire) => wire.id,
                     )}
                     <dag-arrow
@@ -79,10 +81,12 @@ export class DagGraph extends Component {
                 (edge) => edge.id,
             )} ${repeat(
                 this.view.nodes,
-                (node) => tpl`<dag-node
-                    :node=${node}
-                    :active=${this.nodeActive(node.id)}
-                />`,
+                (node) => tpl`
+                    <dag-node
+                        :node=${node}
+                        :active=${this.nodeActive(node.id)}
+                    />
+                `,
                 (node) => node.id,
             )}
         </div>

@@ -238,18 +238,15 @@ export class HomePage extends Component {
             </div>
             <div class="section">
                 <h2>Canvas</h2>
-                <div class="canvas-frame">
-                    <dag-canvas>
-                        <ui-card>
-                            <span slot="header">Drag to pan</span> Scroll to
-                            zoom, or use the controls top-right. The live
-                            position shows bottom-left.
-                            <span slot="footer">Canvas demo</span>
-                        </ui-card>
-                        <canvas-zoom slot="zoom" />
-                        <canvas-coordinates slot="coordinates" />
-                    </dag-canvas>
-                </div>
+                <dag-canvas>
+                    <ui-card>
+                        <span slot="header">Drag to pan</span> Scroll to zoom,
+                        or use the controls top-right. The live position shows
+                        bottom-left. <span slot="footer">Canvas demo</span>
+                    </ui-card>
+                    <canvas-zoom slot="zoom" />
+                    <canvas-coordinates slot="coordinates" />
+                </dag-canvas>
             </div>
         </dashboard-layout>
     `;
