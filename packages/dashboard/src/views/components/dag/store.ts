@@ -1,6 +1,9 @@
 import type { Job } from '#src/views/components/dag/dag';
 
 // #state
+export const hover: { id: string | null } = { id: null };
+
+// #state
 export const dag: { jobs: Job[] } = {
     jobs: [
         { id: 'checkout' },

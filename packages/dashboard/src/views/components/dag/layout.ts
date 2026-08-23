@@ -137,7 +137,7 @@ const elbow = (id: string, from: LayoutNode, to: LayoutNode): LayoutEdge => {
     const sy = from.y + from.height / 2;
     const tx = to.x;
     const ty = to.y + to.height / 2;
-    const midX = sx + (tx - sx) / 2;
+    const midX = sx + COLUMN_GAP / 2;
     const segments: Segment[] = [];
     if (sy === ty) {
         segments.push({

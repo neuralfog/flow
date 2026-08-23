@@ -13,9 +13,9 @@ import '#src/views/components/ui/input/UiInput';
 import '#src/views/components/ui/input/UiInputGroup';
 import '#src/views/components/ui/scrollable/UiScrollable';
 import '#src/views/components/icons/IconLogo';
-import '#src/views/components/canvas/UiCanvas';
-import '#src/views/components/canvas/CanvasZoom';
-import '#src/views/components/canvas/CanvasCoordinates';
+import '#src/views/components/dag/DagCanvas';
+import '#src/views/components/dag/CanvasZoom';
+import '#src/views/components/dag/CanvasCoordinates';
 import '#src/views/components/ui/table/UiTable';
 import '#src/views/components/ui/table/UiTableHead';
 import '#src/views/components/ui/table/UiTableBody';
@@ -239,7 +239,7 @@ export class HomePage extends Component {
             <div class="section">
                 <h2>Canvas</h2>
                 <div class="canvas-frame">
-                    <ui-canvas>
+                    <dag-canvas>
                         <ui-card>
                             <span slot="header">Drag to pan</span> Scroll to
                             zoom, or use the controls top-right. The live
@@ -248,7 +248,7 @@ export class HomePage extends Component {
                         </ui-card>
                         <canvas-zoom slot="zoom" />
                         <canvas-coordinates slot="coordinates" />
-                    </ui-canvas>
+                    </dag-canvas>
                 </div>
             </div>
         </dashboard-layout>

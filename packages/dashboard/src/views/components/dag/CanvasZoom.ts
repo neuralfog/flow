@@ -1,6 +1,6 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import css from '#src/views/components/canvas/CanvasZoom.scss?inline';
+import css from '#src/views/components/dag/CanvasZoom.scss?inline';
 import '#src/views/components/ui/button/UiButton';
 import {
     canvas,
@@ -9,7 +9,7 @@ import {
     ZOOM_MAX,
     ZOOM_MIN,
     ZOOM_STEP,
-} from '#src/views/components/canvas/canvas';
+} from '#src/views/components/dag/canvas';
 
 // #component
 export class CanvasZoom extends Component {

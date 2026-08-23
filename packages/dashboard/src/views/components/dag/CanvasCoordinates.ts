@@ -1,7 +1,7 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import css from '#src/views/components/canvas/CanvasCoordinates.scss?inline';
-import { canvas } from '#src/views/components/canvas/canvas';
+import css from '#src/views/components/dag/CanvasCoordinates.scss?inline';
+import { canvas } from '#src/views/components/dag/canvas';
 
 // #component
 export class CanvasCoordinates extends Component {

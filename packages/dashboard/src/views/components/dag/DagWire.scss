@@ -6,3 +6,8 @@
     position: absolute;
     background: var(--border);
 }
+
+.wire.is-active {
+    background: var(--accent);
+    z-index: 1;
+}

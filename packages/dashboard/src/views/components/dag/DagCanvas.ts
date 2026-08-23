@@ -4,11 +4,11 @@ import {
     canvas,
     clampZoom,
     ZOOM_STEP,
-} from '#src/views/components/canvas/canvas';
-import css from '#src/views/components/canvas/UiCanvas.scss?inline';
+} from '#src/views/components/dag/canvas';
+import css from '#src/views/components/dag/DagCanvas.scss?inline';
 
 // #component
-export class UiCanvas extends Component {
+export class DagCanvas extends Component {
     // #styles
     styles = css;
 

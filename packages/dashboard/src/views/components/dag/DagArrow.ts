@@ -5,6 +5,7 @@ import type { Arrow } from '#src/views/components/dag/dag';
 
 type Props = {
     arrow: Arrow;
+    active?: boolean;
 };
 
 // #component
@@ -14,7 +15,7 @@ export class DagArrow extends Component<Props> {
 
     override template = (): Template => tpl`
         <div
-            class="arrow"
+            class=${{ arrow: true, 'is-active': this.props.active }}
             style=${`left:${this.props.arrow.x}px;top:${this.props.arrow.y}px`}
         ></div>
     `;

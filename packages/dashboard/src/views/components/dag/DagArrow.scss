@@ -11,3 +11,8 @@
     border-left: 7px solid var(--border);
     transform: translate(-7px, -50%);
 }
+
+.arrow.is-active {
+    border-left-color: var(--accent);
+    z-index: 1;
+}
