@@ -19,12 +19,17 @@
     line-height: 0;
 }
 
+.status--waiting .icon--waiting,
 .status--scheduled .icon--scheduled,
 .status--running .icon--running,
 .status--completed .icon--completed,
 .status--failed .icon--failed,
 .status--timed_out .icon--timed_out {
     display: block;
+}
+
+.status--waiting {
+    color: var(--highlight);
 }
 
 .status--scheduled {

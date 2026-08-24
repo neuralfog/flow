@@ -14,21 +14,21 @@ const errorData = (status: number): ErrorData => {
                 code: '404',
                 label: 'Not Found',
                 title: 'Lost in space',
-                message: 'Nothing lives at this address.',
+                message: 'Nothing lives at this address',
             };
         case 500:
             return {
                 code: '500',
                 label: 'Internal Server Error',
                 title: 'Houston, we have a problem',
-                message: 'Something blew up on our end.',
+                message: 'Something blew up on our end',
             };
         default:
             return {
                 code: String(status),
                 label: STATUS_CODES[status] ?? 'Error',
                 title: 'Houston, we have a problem',
-                message: 'Something went wrong on our end.',
+                message: 'Something went wrong on our end',
             };
     }
 };

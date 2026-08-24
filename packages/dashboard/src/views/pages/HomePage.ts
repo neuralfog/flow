@@ -113,6 +113,7 @@ export class HomePage extends Component {
             <div class="section">
                 <h2>Badges</h2>
                 <div class="row">
+                    <status-badge :status=${Status.Waiting} />
                     <status-badge :status=${Status.Scheduled} />
                     <status-badge :status=${Status.Running} :pulse=${true} />
                     <status-badge :status=${Status.Completed} />
@@ -123,6 +124,7 @@ export class HomePage extends Component {
             <div class="section">
                 <h2>Status</h2>
                 <div class="row" style="gap: 1.5rem">
+                    <status-indicator :status=${Status.Waiting} />
                     <status-indicator :status=${Status.Scheduled} />
                     <status-indicator :status=${Status.Running} />
                     <status-indicator :status=${Status.Completed} />

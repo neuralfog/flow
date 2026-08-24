@@ -4,7 +4,7 @@ import css from '#src/views/components/ui/badge/UiBadge.scss?inline';
 
 type Props = {
     label: string;
-    variant?: 'neutral' | 'info' | 'success' | 'warn' | 'error';
+    variant?: 'neutral' | 'info' | 'success' | 'warn' | 'error' | 'highlight';
     dot?: boolean;
     pulse?: boolean;
 };

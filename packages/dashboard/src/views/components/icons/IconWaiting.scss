@@ -1,0 +1,64 @@
+.hourglass {
+    transform-origin: 8px 8px;
+    animation: hourglass-flip 2.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.sand-top {
+    transform-origin: 8px 3.5px;
+    animation: sand-top 2.4s ease-in-out infinite;
+}
+
+.sand-bottom {
+    transform-origin: 8px 12.5px;
+    animation: sand-bottom 2.4s ease-in-out infinite;
+}
+
+@keyframes hourglass-flip {
+    0%,
+    42% {
+        transform: rotate(0deg);
+    }
+    50%,
+    92% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sand-top {
+    0% {
+        transform: scaleY(1);
+    }
+    42%,
+    50% {
+        transform: scaleY(0);
+    }
+    92%,
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes sand-bottom {
+    0% {
+        transform: scaleY(0);
+    }
+    42%,
+    50% {
+        transform: scaleY(1);
+    }
+    92%,
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hourglass,
+    .sand-top,
+    .sand-bottom {
+        animation-duration: 4.8s;
+    }
+}

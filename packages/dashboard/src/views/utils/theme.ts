@@ -1,9 +1,4 @@
-import '@neuralfog/hydris/store';
-
-export type ThemePref = 'light' | 'dark' | 'system';
-
-// #store user-prefs
-export const userPrefs = { theme: 'system' as ThemePref };
+import { type ThemePref, userPrefs } from '#src/views/stores/userPrefs';
 
 const media = (): MediaQueryList => matchMedia('(prefers-color-scheme: dark)');
 

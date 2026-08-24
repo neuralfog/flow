@@ -4,6 +4,7 @@ import css from '#src/views/components/StatusIndicator.scss?inline';
 import { Status } from '#src/views/types/Status';
 import { statusText } from '#src/views/utils/statusText';
 
+import '#src/views/components/icons/IconWaiting';
 import '#src/views/components/icons/IconScheduled';
 import '#src/views/components/icons/IconRunning';
 import '#src/views/components/icons/IconCompleted';
@@ -22,6 +23,9 @@ export class StatusIndicator extends Component<Props> {
 
     override template = (): Template => tpl`
         <span class="status status--${this.props.status}">
+            <span class="icon icon--waiting">
+                <icon-waiting />
+            </span>
             <span class="icon icon--scheduled">
                 <icon-scheduled />
             </span>

@@ -12,9 +12,10 @@ type Props = {
     pulse?: boolean;
 };
 
-type Variant = 'neutral' | 'info' | 'success' | 'warn' | 'error';
+type Variant = 'neutral' | 'info' | 'success' | 'warn' | 'error' | 'highlight';
 
 const variant: Record<Status, Variant> = {
+    [Status.Waiting]: 'highlight',
     [Status.Scheduled]: 'neutral',
     [Status.Running]: 'info',
     [Status.Completed]: 'success',

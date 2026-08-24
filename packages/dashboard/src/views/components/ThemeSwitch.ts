@@ -5,12 +5,8 @@ import css from '#src/views/components/ThemeSwitch.scss?inline';
 import '#src/views/components/icons/IconSun';
 import '#src/views/components/icons/IconMoon';
 import '#src/views/components/icons/IconMonitor';
-import {
-    applyTheme,
-    type ThemePref,
-    userPrefs,
-    watchSystemTheme,
-} from '#src/views/utils/theme';
+import { type ThemePref, userPrefs } from '#src/views/stores/userPrefs';
+import { applyTheme, watchSystemTheme } from '#src/views/utils/theme';
 
 // #component
 export class ThemeSwitch extends Component {

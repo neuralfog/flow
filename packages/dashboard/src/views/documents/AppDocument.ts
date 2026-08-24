@@ -1,8 +1,7 @@
 import { Component, tpl } from '@neuralfog/elemix';
 import type { Template } from '@neuralfog/elemix/types';
-import { asset } from '@neuralfog/hydris';
 import css from '#src/views/documents/AppDocument.scss?inline';
-import { userPrefs } from '#src/views/utils/theme';
+import { userPrefs } from '#src/views/stores/userPrefs';
 
 const speculationRules = JSON.stringify({
     prefetch: [
@@ -37,7 +36,7 @@ export class AppDocument extends Component {
                 <link
                     rel="icon"
                     type="image/svg+xml"
-                    href="${asset('/assets/favicon.svg')}"
+                    href="/assets/favicon.svg"
                 />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link
